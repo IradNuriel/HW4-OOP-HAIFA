@@ -3,6 +3,8 @@
 #include <string>
 #include <map>
 
+
+//class Employee declerations:
 class Employee {
 private:
 	//for the encapsulation, the derived class will know only what it realy need
@@ -24,7 +26,7 @@ protected:
 	virtual void print(std::ostream& out) const = 0;
 };
 
-
+//class DeveloperEmployee declerations:
 class DeveloperEmployee: public Employee {
 private:
 	std::string project;
@@ -38,6 +40,7 @@ protected:
 	virtual void print(std::ostream& out) const;
 };
 
+//class TesterEmployee declerations:
 class TesterEmployee: public Employee {
 private:
 	std::string level;
@@ -53,8 +56,9 @@ protected:
 
 
 
-
+//IllegalArguments exeption
 class IllegalArguments: public std::exception {
+	//IllegalArguments exeption:
 	virtual const char* what() const throw() {
 		return "";
 	}
@@ -62,7 +66,7 @@ class IllegalArguments: public std::exception {
 
 
 
-
+//class Company
 class Company {
 private:
 	/*we need functionality of inserting+deliting+searching an item by one of his properties,
@@ -78,7 +82,7 @@ public:
 	bool contains(int id);
 };
 
-
+//class Printable, using mixin!!!!!!(I'm a bit excited about that)
 template <class Base>
 class Printable: public Base {
 protected:
@@ -94,7 +98,7 @@ public:
 	}
 };
 
-
+//class PrintableDeveloper
 class PrintableDeveloper : public Printable<DeveloperEmployee> {
 protected:
 	PrintableDeveloper(const PrintableDeveloper& other): Printable(other) {
@@ -109,7 +113,7 @@ public:
 	}
 };
 
-
+//class PrintableTester
 class PrintableTester : public Printable<TesterEmployee> {
 protected:
 	PrintableTester(const PrintableTester& other) : Printable(other) {
@@ -123,44 +127,3 @@ public:
 		return new PrintableTester(*this);
 	}
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
